@@ -44,4 +44,5 @@ class Pedidos(db.Model):
     product = db.Column(db.String(30), nullable=False)
     amount = db.Column(db.Integer(),nullable = False)
     usuario = db.relationship("Usuario", backref="pedidos")
+    time = db.Column(db.String(30), nullable=False)
 
