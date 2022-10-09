@@ -38,14 +38,10 @@ class Ingredients(db.Model):
     id_producto = db.Column(db.Integer(), db.ForeignKey('pizzas.id'), nullable=False)  
     pizzas = db.relationship("Pizzas", backref="ingredients") 
 
-class Pedido(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    product = db.Column(db.String(30), nullable=False)
-    amount = db.Column(db.Integer(),nullable = False)
-
-class Carrito(db.Model):
+class Pedidos(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     id_usuario = db.Column(db.String(50), db.ForeignKey('usuario.email'), nullable=False)
-    id_pedido = db.Column(db.String(50), db.ForeignKey('pedido.email'), nullable=False)
-    pedido = db.relationship("Pedido", backref="carrito")  
-    usuario = db.relationship("Usuario", backref="carrito")
+    product = db.Column(db.String(30), nullable=False)
+    amount = db.Column(db.Integer(),nullable = False)
+    usuario = db.relationship("Usuario", backref="pedidos")
+
